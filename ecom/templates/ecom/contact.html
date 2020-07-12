@@ -1,0 +1,110 @@
+{% extends 'ecom/basic.html' %}
+{% block title %} Contact Us {% endblock %}
+
+{% block css %}
+
+.navbar-brand h1{
+  color: #ffffff;
+  margin-top:-5px;
+  margin-left: 15px;
+}
+
+.navbar{
+color: #FF6347;
+background: MediumSeaGreen;
+}
+
+{% endblock %}
+
+{% block body %} 
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+  
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">Shopkart</h1>
+        <p class="lead text-muted mb-0">Contact Us by filling the below form or from the detail mention below.</p>
+    </div>
+</section>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header bg-primary text-white"><i class="fa fa-envelope"></i> Contact us.
+                </div>
+                <div class="card-body">
+                    <form action="/ecom/contact/" method="post">{% csrf_token %}
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp" placeholder="Enter name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email address</label>
+                            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email" required>
+                <div class="form-group my-1">
+                            <label for="name">Phone</label>
+                            <input type="phone" class="form-control" id="phone" name="phone" aria-describedby="emailHelp">
+                        </div>      
+
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea class="form-control" id="message" name="message" rows="6" required></textarea>
+                        </div>
+                        <div class="mx-auto">
+                        <button type="submit" class="btn btn-primary text-right">Submit</button></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-4">
+            <div class="card bg-light mb-3">
+                <div class="card-header bg-success text-white text-uppercase"><i class="fa fa-home"></i> Address</div>
+                <div class="card-body">
+                    <p>Village Area Delhi</p>
+                    <p>New Delhi=110042</p>
+                    <p>Delhi</p>
+                    <p>Email : email@example.com</p>
+                    <p>Tel. +33 12 56 11 51 84</p>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+ {% endblock %}
+
+
+<!--js code for item cart-->
+
+{% block js %}
+
+<script>
+  
+  if (localStorage.getItem('cart') == null) {
+    var cart = {};
+} else {
+    cart = JSON.parse(localStorage.getItem('cart'));
+}
+console.log(cart);
+var sum =0;
+
+for(item in cart){
+  let name =cart[item][1];
+  let qty =cart[item][0];
+  sum =sum + qty;
+}
+
+document.getElementById('cart').innerHTML = sum;
+
+
+</script>
+
+{% endblock %}   

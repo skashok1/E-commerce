@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <title>Paytm-SecurePayment</title>
+</head>
+<body>
+	<h2>Please be patient while your transaction is being processed.</h2>
+	<p>Do not "close the window" or press "refresh" or back/forword button.</p>
+
+<form action="https://securegw-stage.paytm.in/order/process" method="post" name="paytm">
+	{% for key, value in param_dict.items %}
+	<input type="hidden" name="{{key}}" value="{{value}}">
+	<table border="1">
+            <tbody>
+               <input type="hidden" name="MID" value="aWcZfn29349698783490">
+            </tbody>
+         </table>
+
+	{% endfor%}
+</form>
+</body>
+<script>
+document.paytm.submit();
+</script>
+</html>
+
+   

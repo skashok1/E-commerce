@@ -1,0 +1,84 @@
+{% extends 'ecom/basic.html' %}
+{% block title %} About Us {% endblock %}
+
+{% block css %}
+
+.navbar-brand h1{
+  color: #ffffff;
+  margin-top:-5px;
+  margin-left: 15px;
+}
+
+.navbar{
+color: #FF6347;
+background: MediumSeaGreen;
+}
+
+{% endblock %}
+
+
+{% block body %}
+
+  <header class="bg-primary text-white">
+    <div class="container text-center"><br>
+      <h1>Welcome to Shopkart</h1>
+      <p class="lead">Shopkart is the india's leading e-commerce marketplace with over thousand of products and different categories</p><br>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2>About this page</h2>
+          <p class="lead">This is a great place to talk about your webpage. This template is purposefully unstyled so you can use it as a boilerplate or starting point for you own landing page designs! This template features:</p>
+          <ul>
+            <li>Clickable nav links that smooth scroll to page sections</li>
+            <li>Responsive behavior when clicking nav links perfect for a one page website</li>
+            <li>Bootstrap's scrollspy feature which highlights which section of the page you're on in the navbar</li>
+            <li>Minimal custom CSS so you are free to explore your own unique design options</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom JavaScript for this theme -->
+  <script src="js/scrolling-nav.js"></script>
+
+ {% endblock %}
+
+
+<!--js code for item cart-->
+{% block js %}
+
+<script>
+  
+  if (localStorage.getItem('cart') == null) {
+    var cart = {};
+} else {
+    cart = JSON.parse(localStorage.getItem('cart'));
+}
+console.log(cart);
+var sum =0;
+
+for(item in cart){
+  let name =cart[item][1];
+  let qty =cart[item][0];
+  sum =sum + qty;
+}
+
+document.getElementById('cart').innerHTML = sum;
+
+
+</script>
+
+{% endblock %}
